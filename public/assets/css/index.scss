@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+// COLOR TEMPLATE
+$primarycolor: #007bff;
+$secondarycolor: #6c757d;
+$successcolor: #28a745;
+$dangercolor: #dc3545;
+$warningcolor: #ffc107;
+$infocolor: #17a2b8;
+$lightcolor: #f8f9fa;
+$darkcolor: #343a40;
+$whitecolor: #fff;
+$blackcolor: #000;
+
+/*##########
+############
+PRESET CSS
+############
+############
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+a {
+    text-decoration: none;
+    font-weight: 600;
+}
+.btn {
+    padding: 5px 10px;
+    background-color: $primarycolor;
+    color: $whitecolor;
+    border: none;
+    font-weight: 500;
+    &:hover {
+        opacity: 0.8;
+    }
+    a {
+        color: $whitecolor;
+        font-weight: 600;
+    }
+    &-primary {
+        background-color: $primarycolor;
+    }
+    &-secondary {
+        background-color: $secondarycolor;
+    }
+    &-success {
+        background-color: $successcolor;
+    }
+    &-danger {
+        background-color: $dangercolor;
+    }
+    &-warning {
+        background-color: $warningcolor;
+    }
+    &-info {
+        background-color: $infocolor;
+    }
+    &-light {
+        background-color: $lightcolor;
+    }
+    &-dark {
+        background-color: $darkcolor;
+    }
+}
+body {
+    background-color: $whitecolor;
+}
+aside {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background-color: $lightcolor;
+    overflow: auto;
+}
+#app {
+    margin-left: 200px;
+    padding: 1rem;
+}
+.cursor {
+    cursor: pointer;
+}
+.heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $blackcolor;
+    margin-bottom: 1rem;
+}
+.text-center {
+    text-align: center;
+}
+.form-box {
+    width: 100%;
+    max-width: 1200px;
+}
+.table-box {
+    overflow-x: scroll;
+    height: calc(100vh - 90px);
+}
+$breakpoints: (100, 200, 300, 400, 500, 600, 700, 800, 900, 1000);
+
+@each $bp in $breakpoints {
+    .fb-#{$bp} {
+        flex-basis: #{$bp}px;
+    }
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.mb-1{
+    margin-bottom: 1rem;
+}
+
+/*##########
+############
+SIDEBAR CSS
+############
+############
+*/
+.sidenav-link {
+    color: $blackcolor;
+    padding: 2px 1rem;
+    border-left: 4px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+    gap: 5px;
+    &:hover {
+        border-left: 4px solid $primarycolor;
+    }
+    img {
+        height: 1rem;
+    }
+    &.active {
+        border-left: 4px solid $primarycolor;
+    }
+}
+
+/*##########
+############
+TABLE CSS
+############
+############
+*/
+table {
+    width: auto;
+    border-collapse: collapse;
+    white-space: nowrap;
+    a {
+        color: $primarycolor;
+        font-weight: 500;
+    }
+    thead {
+        background-color: $primarycolor;
+        color: $whitecolor;
+        th {
+            font-weight: 500;
+        }
+    }
+    td,
+    th {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 2px 10px;
+        text-align: left;
+        font-size: 14px;
+    }
+    td {
+        a {
+            text-decoration: underline;
+        }
+    }
+}
+.quote-table {
+    width: 100%;
+    thead {
+        background-color: $secondarycolor;
+    }
+}
+
+/*##########
+############
+FORM CSS
+############
+############
+*/
+.customer-form,
+.quote-form {
+    border: 2px solid $secondarycolor;
+    border-top: 8px solid #035bb9;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    .form-error {
+        color: $dangercolor;
+        font-size: 0.8rem;
+    }
+    .form-header {
+        background-color: $primarycolor;
+        color: $whitecolor;
+        text-align: center;
+        padding: 5px 0;
+        h1 {
+            font-weight: 600;
+            font-size: 2rem;
+        }
+        p {
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 4px;
+        }
+    }
+
+    .form-block {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1rem;
+        gap: 1rem;
+        h2 {
+            margin-top: 1rem;
+            width: 100%;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: $secondarycolor;
+        }
+    }
+    .form-field {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        flex-grow: 1;
+    }
+    .form-label {
+        font-weight: 600;
+        color: rgba(0, 0, 0, 0.7);
+    }
+    select,
+    .form-input {
+        padding: 8px 10px;
+        border: 1px solid rgba(108, 117, 125, 0.8);
+    }
+    .form-button {
+        padding: 5px 10px;
+        text-transform: uppercase;
+        background-color: $primarycolor;
+        color: $whitecolor;
+        outline: none;
+        border: none;
+        font-weight: 700;
+        a {
+            color: $whitecolor;
+        }
+        margin-bottom: 1rem;
+    }
+    .autocomplete-items {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        /*position the autocomplete items to be the same width as the container:*/
+        top: 100%;
+        left: 0;
+        right: 0;
+    }
+    .autocomplete-items div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff;
+        border-bottom: 1px solid #d4d4d4;
+    }
+    .autocomplete-items div:hover {
+        /*when hovering an item:*/
+        background-color: #e9e9e9;
+    }
+    .autocomplete-active {
+        /*when navigating through the items using the arrow keys:*/
+        background-color: DodgerBlue !important;
+        color: #ffffff;
+    }
+}
+.quote-form {
+    border: 2px solid #565d64;
+    border-top: 8px solid #565d64;
+    .form-header {
+        background-color: $secondarycolor;
+    }
+}

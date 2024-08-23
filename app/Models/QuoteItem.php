@@ -25,4 +25,29 @@ class QuoteItem extends Model
     {
         return $this->quantity * $this->product->price;
     }
+
+    public function totalWithTax($tax = 0.18)
+    {
+        return $this->total() * $tax;
+    }
+
+    // public function remove()
+    // {
+    //     $this->delete();
+    // }
+
+    // public function updateQuantity($quantity)
+    // {
+    //     $this->update(['quantity' => $quantity]);
+    // }
+
+    // public function updatePrice($price)
+    // {
+    //     $this->update(['price' => $price]);
+    // }
+
+    // public function updateTotal()
+    // {
+    //     $this->update(['total' => $this->total()]);
+    // }
 }

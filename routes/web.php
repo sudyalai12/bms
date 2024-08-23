@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuoteController;
+use App\Models\Quote;
+use App\Models\QuoteItem;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home');
@@ -28,4 +31,12 @@ Route::get('/quotes/create', [QuoteController::class, 'create']);
 Route::post('/quotes', [QuoteController::class, 'store']);
 Route::post('/quotes/{quote}', [QuoteController::class, 'storeItem']);
 Route::delete('/quotes/{quote}/items/{quoteItem}', [QuoteController::class, 'destroyItem']);
+Route::get('/quotes/{quote}/pdf', [PdfController::class, 'quotePdf']);
+Route::get('/quotes/{quote}/pdf1', function ($quote) {
+    return view('pdf.quote', ['quote' => $quote]);
+});
+// Route::delete('/quotes/{quote}/items/{quoteItem}', function (Quote $quote, QuoteItem $quoteItem) {
+//     $quoteItem->delete();
+//     return redirect("/quotes/{$quote->id}");
+// });
 Route::get('/quotes/{quote}', [QuoteController::class, 'show']);

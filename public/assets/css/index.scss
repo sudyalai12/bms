@@ -98,7 +98,14 @@ aside {
 }
 .table-box {
     overflow-x: scroll;
-    height: calc(100vh - 90px);
+    height: auto;
+    max-height: calc(100vh - 90px);
+}
+.no-border{
+    border: none;
+    td,th{
+        border: none;
+    }
 }
 $breakpoints: (100, 200, 300, 400, 500, 600, 700, 800, 900, 1000);
 

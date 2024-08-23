@@ -95,7 +95,15 @@ aside {
 
 .table-box {
   overflow-x: scroll;
-  height: calc(100vh - 90px);
+  height: auto;
+  max-height: calc(100vh - 90px);
+}
+
+.no-border {
+  border: none;
+}
+.no-border td, .no-border th {
+  border: none;
 }
 
 .fb-100 {

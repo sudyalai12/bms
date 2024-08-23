@@ -25,4 +25,14 @@ class Quote extends Model
     {
         return $this->items->sum->total();
     }
+
+    public function totalWithTax($tax = 0.18)
+    {
+        return $this->total() * $tax;
+    }
+
+    public function grandTotal()
+    {
+        return $this->total() + $this->totalWithTax();
+    }
 }

@@ -1,25 +1,8 @@
 @extends('layouts.app')
+@section('js')
+@endsection
 @php
     $index = 1;
-    // function currencyConveter($price)
-    // {
-    //     $currencies = [
-    //         'USD' => ['formatter' => 'en_US'], // US Dollar
-    //         'EUR' => ['formatter' => 'fr-FR'], // Euro
-    //         'GBP' => ['formatter' => 'en_GB'], // Pound Sterling
-    //         'INR' => ['formatter' => 'en_IN'], // Indian Rupee
-    //     ];
-
-    //     // Determine the currency to use based on the selected currency cookie. If no currency is selected, default to INR (Indian Rupee).
-    //     $currency = $currencies['INR'];
-
-    //     // Create a formatter object for the selected currency.
-    //     $formatter = new NumberFormatter($currency['formatter'], \NumberFormatter::CURRENCY);
-
-    //     // Format and return the currency value.
-    //     // with one space between the currency sign and currency value
-    //     return $formatter->formatCurrency($price);
-    // }
 @endphp
 @section('content')
     <div class="form-box">
@@ -115,9 +98,3 @@
 
     <x-button btntype="warning"><a href="/quotes/{{ $quote->id }}/pdf" target="_blank">Generate Quote PDF</a></x-button>
 @endSection
-
-@section('js')
-    <script>
-        let products = {!! json_encode($products->toArray()) !!};
-    </script>
-@endsection

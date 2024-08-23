@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('js')
+@endsection
 @section('content')
     <div class="form-box">
         <form method="POST" class="form quote-form" action="/quotes">
@@ -33,10 +35,3 @@
         </form>
     </div>
 @endSection
-
-@section('js')
-    <script>
-        let customers = {!! json_encode($customers->toArray()) !!};
-        let products = {!! json_encode($products->toArray()) !!};
-    </script>
-@endsection

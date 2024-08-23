@@ -16,10 +16,7 @@ class ProductController extends Controller
 
     public function create(): \Illuminate\View\View
     {
-        $products = Product::pluck('name');
-        $suppliers = Supplier::pluck('name');
-
-        return view('products.create', compact('products', 'suppliers'));
+        return view('products.create');
     }
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
@@ -50,10 +47,7 @@ class ProductController extends Controller
 
     public function edit(Product $product): \Illuminate\View\View
     {
-        $products = Product::pluck('name');
-        $suppliers = Supplier::pluck('name');
-
-        return view('products.edit', compact('product', 'products', 'suppliers'));
+        return view('products.edit', compact('product'));
     }
 
     public function update(Product $product, Request $request): \Illuminate\Http\RedirectResponse

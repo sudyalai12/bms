@@ -1,5 +1,6 @@
 @extends('layouts.app')
-
+@section('js')
+@endsection
 @section('content')
     <div class="form-box">
         <form method="POST" class="form customer-form" action="/products/{{ $product->id }}">
@@ -48,10 +49,3 @@
         </form>
     </div>
 @endSection
-
-@section('js')
-    <script>
-        let products = {!! json_encode($products->toArray()) !!};
-        let suppliers = {!! json_encode($suppliers->toArray()) !!};
-    </script>
-@endsection

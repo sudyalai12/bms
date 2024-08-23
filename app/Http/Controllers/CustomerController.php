@@ -21,11 +21,9 @@ class CustomerController extends Controller
 
     public function create(): \Illuminate\View\View
     {
-        $companies = Company::pluck('name');
-        $departments = Department::pluck('name');
         $taxTypes = Customer::$taxTypes;
         $countries = Customer::$countryList;
-        return view('customers.create', compact('companies', 'departments', 'taxTypes', 'countries'));
+        return view('customers.create', compact('taxTypes', 'countries'));
     }
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
@@ -84,11 +82,9 @@ class CustomerController extends Controller
 
     public function edit(Customer $customer): \Illuminate\View\View
     {
-        $companies = Company::pluck('name');
-        $departments = Department::pluck('name');
         $taxTypes = Customer::$taxTypes;
         $countries = Customer::$countryList;
-        return view('customers.edit', compact('customer', 'companies', 'departments', 'taxTypes', 'countries'));
+        return view('customers.edit', compact('customer', 'taxTypes', 'countries'));
     }
 
     public function update(Customer $customer, Request $request): \Illuminate\Http\RedirectResponse
@@ -153,7 +149,7 @@ class CustomerController extends Controller
 
         return redirect('/customers/' . $customer->id);
     }
-    
+
     public function destroy(Customer $customer): \Illuminate\Http\RedirectResponse
     {
         $customer->delete();

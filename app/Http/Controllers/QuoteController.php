@@ -18,10 +18,7 @@ class QuoteController extends Controller
 
     public function create(): \Illuminate\Contracts\View\View
     {
-        $customers = Customer::pluck('name');
-        $products = Product::pluck('name');
-
-        return view('quotes.create', compact('customers', 'products'));
+        return view('quotes.create');
     }
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
@@ -45,8 +42,7 @@ class QuoteController extends Controller
 
     public function show(Quote $quote): \Illuminate\Contracts\View\View
     {
-        $products = Product::pluck('name');
-        return view('quotes.show', compact('quote', 'products'));
+        return view('quotes.show', compact('quote'));
     }
 
     public function edit() {}

@@ -1,1 +1,1 @@
-<input autocomplete="off" {{ $attributes->merge(['class' => 'form-input']) }}>
+<input {{ $attributes->merge(['class' => 'form-input']) }}>

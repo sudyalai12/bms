@@ -10,4 +10,8 @@ class Company extends Model
     use HasFactory;
     protected $table = 'companies';
     protected $guarded = [];
+
+    public function addresses(){
+        return $this->hasMany(Address::class);
+    }
 }

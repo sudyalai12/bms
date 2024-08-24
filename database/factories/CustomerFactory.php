@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Address;
 use App\Models\Company;
+use App\Models\Customer;
 use App\Models\Department;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -11,9 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Customer>
  */
 class CustomerFactory extends Factory
-{
-    private $tax_types = ["GST", "CGST", "SGST", "IGST", "UTST"];
-    
+{   
     /**
      * Define the model's default state.
      *
@@ -29,7 +28,7 @@ class CustomerFactory extends Factory
             'email' => fake()->safeEmail(),
             'phone' => fake()->phoneNumber(),
             'mobile' => fake()->phoneNumber(),
-            'tax_type' => fake()->randomElement($this->tax_types),
+            'tax_type' => fake()->randomElement(Customer::$taxTypes),
             'gstn' => fake()->regexify('[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}[Z]{1}[0-9A-Z]{1}'),
             'pan' => fake()->regexify('[A-Z]{5}[0-9]{4}[A-Z]{1}'),
         ];

@@ -18,7 +18,7 @@ class QuoteFactory extends Factory
     public function definition(): array
     {
         return [
-            'customer_id' => Customer::factory(),
+            'customer_id' => fake()->randomNumber(2, true),
         ];
     }
 }

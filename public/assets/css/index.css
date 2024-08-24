@@ -264,12 +264,11 @@ FORM CSS
 .quote-form .form-block {
   display: flex;
   flex-wrap: wrap;
-  padding: 1rem;
-  gap: 1rem;
+  padding: 0.5rem;
+  gap: 0.5rem;
 }
 .customer-form .form-block h2,
 .quote-form .form-block h2 {
-  margin-top: 1rem;
   width: 100%;
   font-size: 1rem;
   text-transform: uppercase;
@@ -281,11 +280,12 @@ FORM CSS
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.2rem;
   flex-grow: 1;
 }
 .customer-form .form-label,
 .quote-form .form-label {
+  font-size: 0.8rem;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -293,9 +293,26 @@ FORM CSS
 .customer-form .form-input,
 .quote-form select,
 .quote-form .form-input {
-  padding: 8px 10px;
+  padding: 2px 8px;
   border: 1px solid rgba(108, 117, 125, 0.8);
   width: 100%;
+}
+.customer-form select:focus,
+.customer-form .form-input:focus,
+.quote-form select:focus,
+.quote-form .form-input:focus {
+  outline: none;
+}
+.customer-form select::-moz-placeholder, .customer-form .form-input::-moz-placeholder, .quote-form select::-moz-placeholder, .quote-form .form-input::-moz-placeholder {
+  font-size: 0.7rem;
+  color: rgba(52, 58, 64, 0.5019607843);
+}
+.customer-form select::placeholder,
+.customer-form .form-input::placeholder,
+.quote-form select::placeholder,
+.quote-form .form-input::placeholder {
+  font-size: 0.7rem;
+  color: rgba(52, 58, 64, 0.5019607843);
 }
 .customer-form .form-button,
 .quote-form .form-button {
@@ -327,13 +344,19 @@ FORM CSS
   border-bottom: none;
   border-top: none;
   z-index: 99;
-  /*position the autocomplete items to be the same width as the container:*/
   top: 100%;
   left: 0;
   right: 0;
+  height: auto;
+  max-height: 200px;
+  overflow-y: auto;
 }
 .autocomplete-items div {
   border: 1px solid #d4d4d4;
   border-top: none;
   padding: 2px 8px;
+  font-size: 0.8rem;
+}
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
 }/*# sourceMappingURL=index.css.map */

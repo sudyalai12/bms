@@ -15,25 +15,25 @@
             </div>
             <div class="form-block">
                 <h2>Basic Details</h2>
-                <x-form.field class="fb-500">
+                <x-form.field class="fb-200">
                     <x-form.label for="customer">Customer Name</x-form.label>
                     <x-form.input placeholder="Enter Customer Name" id="customer" type="text" name="name"
                         value="{{ old('name') }}" />
                     <x-form.error name="name" />
                 </x-form.field>
-                <x-form.field class="fb-500">
+                <x-form.field class="fb-200">
                     <x-form.label for="email">Email</x-form.label>
                     <x-form.input placeholder="Enter Email" id="email" type="email" name="email"
                         value="{{ old('email') }}" />
                     <x-form.error name="email" />
                 </x-form.field>
-                <x-form.field class="fb-500">
+                <x-form.field class="fb-200">
                     <x-form.label for="company">Company</x-form.label>
                     <x-form.input placeholder="Enter Company Name" id="company" type="text" name="company"
                         value="{{ old('company') }}" />
                     <x-form.error name="company" />
                 </x-form.field>
-                <x-form.field class="fb-500">
+                <x-form.field class="fb-200">
                     <x-form.label for="department">Department</x-form.label>
                     <x-form.input placeholder="Enter Department" id="department" type="text" name="department"
                         value="{{ old('department') }}" />

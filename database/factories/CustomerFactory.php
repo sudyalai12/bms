@@ -21,9 +21,9 @@ class CustomerFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_id' => Company::factory(),
-            'department_id' => Department::factory(),
-            'address_id' => Address::factory(),
+            'company_id' => fake()->randomNumber(2, true),
+            'department_id' => fake()->randomNumber(2, true),
+            'address_id' => fake()->randomNumber(2, true),
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'phone' => fake()->phoneNumber(),

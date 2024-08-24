@@ -19,7 +19,7 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_id' => Company::get()->random()->id,
+            'company_id' => fake()->randomNumber(2, true),
             'address1' => fake()->address(),
             'address2' => fake()->address(),
             'city' => fake()->city(),

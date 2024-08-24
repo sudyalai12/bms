@@ -18,7 +18,7 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'supplier_id' => Supplier::factory(),
+            'supplier_id' => fake()->randomNumber(2, true),
             'name' => fake()->name(),
             'description' => fake()->text(),
             'price' => fake()->numberBetween(100, 1000),

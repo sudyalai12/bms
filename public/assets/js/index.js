@@ -4,61 +4,51 @@ $(function () {
     console.log("JQuery Loaded");
 
     function search(url, input) {
-        if (!input || !url) {
-            return;
-        }
+        const $input = $(input);
+        const $autocompleteItems = $input.siblings(".autocomplete-items");
 
-        $(input).on("keyup", function () {
-            const value = $(this).val();
+        $input.on("focus keyup", function () {
+            const value = $input.val();
 
-            if (value.length > 0) {
-                $.ajax({
-                    url: url,
-                    data: {
-                        column: $(this).attr("id"),
-                        search: value,
-                    },
-                    type: "GET",
-                    success: function (data) {
-                        if (!data) {
-                            return;
+            // if (!value) {
+            //     $autocompleteItems.hide();
+            //     return;
+            // }
+
+            $.ajax({
+                url,
+                data: {
+                    column: $input.attr("id"),
+                    search: value,
+                },
+                type: "GET",
+                success(data) {
+                    if (!data || !data.length) {
+                        $autocompleteItems.hide();
+                        return;
+                    }
+
+                    const html = data
+                        .map(
+                            (item) =>
+                                `<div class="autocomplete-item cursor">${item}</div>`
+                        )
+                        .join("");
+                    $autocompleteItems.html(html).show();
+
+                    $autocompleteItems.on(
+                        "click",
+                        ".autocomplete-item",
+                        function () {
+                            $input.val($(this).text());
+                            $autocompleteItems.hide();
                         }
-
-                        try {
-                            console.log(data);
-                            $(".autocomplete-items").show();
-                            $(".autocomplete-items").html("");
-                            data.forEach((item) => {
-                                if (!item) {
-                                    return;
-                                }
-
-                                $(input)
-                                    .siblings(".autocomplete-items")
-                                    .append(
-                                        `<div class="autocomplete-item cursor">${item}</div>`
-                                    );
-                            });
-
-                            $(input)
-                                .siblings(".autocomplete-items")
-                                .on("click", ".autocomplete-item", function () {
-                                    $(input).val($(this).text());
-                                    $(".autocomplete-items").hide();
-                                    $(".autocomplete-items").html("");
-                                });
-                        } catch (error) {
-                            console.error(error);
-                        }
-                    },
-                    error: function (error) {
-                        console.error(error);
-                    },
-                });
-            } else {
-                $(".autocomplete-items").hide();
-                $(".autocomplete-items").html("");
-            }
+                    );
+                },
+                error(error) {
+                    console.error(error);
+                },
+            });
         });
     }
 

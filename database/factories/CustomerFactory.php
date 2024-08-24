@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Address;
 use App\Models\Company;
+use App\Models\Country;
 use App\Models\Customer;
 use App\Models\Department;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,9 +22,10 @@ class CustomerFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_id' => fake()->randomNumber(2, true),
-            'department_id' => fake()->randomNumber(2, true),
-            'address_id' => fake()->randomNumber(2, true),
+            'company_id' => Company::all()->random()->id,
+            'department_id' => Department::all()->random()->id,
+            'address_id' => Address::all()->random()->id,
+            'country_id' => Country::all()->random()->id,
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'phone' => fake()->phoneNumber(),

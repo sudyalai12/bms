@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Address;
 use App\Models\Company;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,7 +26,6 @@ class AddressFactory extends Factory
             'city' => fake()->city(),
             'pincode' => fake()->postcode(),
             'state' => fake()->state(),
-            'country' => fake()->randomElement(Address::$countryList),
         ];
     }
 }

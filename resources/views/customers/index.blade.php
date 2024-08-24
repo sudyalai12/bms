@@ -35,7 +35,7 @@
                     <td>{{ $customer->address->city }}</td>
                     <td>{{ $customer->address->pincode }}</td>
                     <td>{{ $customer->address->state }}</td>
-                    <td>{{ $customer->address->country }}</td>
+                    <td>{{ $customer->address->country->name }}</td>
                     <td>{{ $customer->phone }}</td>
                     <td>{{ $customer->mobile }}</td>
                     <td>{{ $customer->email }}</td>

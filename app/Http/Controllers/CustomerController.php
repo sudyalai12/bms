@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use App\Models\Company;
+use App\Models\Country;
 use App\Models\Customer;
 use App\Models\Department;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class CustomerController extends Controller
 
     public function index(): \Illuminate\View\View
     {
-        $customers = Customer::with('company', 'department', 'address')->latest()->get();
+        $customers = Customer::with('company', 'department', 'address', 'country')->latest()->get();
         return view('customers.index', compact('customers'));
     }
 
@@ -51,7 +52,7 @@ class CustomerController extends Controller
             'gstn' => 'required|string|size:15',
             'pan' => 'required|string|size:10',
         ]);
-
+        $country = Country::where('name', $validate['country'])->first();
         $company = Company::firstOrCreate(['name' => $validate['company']]);
         $department = Department::firstOrCreate(['name' => $validate['department']]);
         $address = Address::firstOrCreate(
@@ -62,7 +63,7 @@ class CustomerController extends Controller
                 'city' => $validate['city'],
                 'pincode' => $validate['pincode'],
                 'state' => $validate['state'],
-                'country' => $validate['country'],
+                'country' => $country->id,
             ]
         );
 
@@ -108,7 +109,7 @@ class CustomerController extends Controller
             'state' => 'required|min:3|max:255|string',
             'country' => [
                 'required',
-                'in:' . implode(',', Address::$countryList),
+                'in:' . implode(',', Country::$countries),
             ],
             'phone' => 'required|numeric|digits:10',
             'mobile' => 'required|numeric|digits:10',
@@ -120,6 +121,7 @@ class CustomerController extends Controller
             'pan' => 'required|string|size:10',
         ]);
 
+        $country = Country::where('name', $validate['country'])->first();
         $company = Company::firstOrCreate(['name' => $validate['company']]);
         $department = Department::firstOrCreate(['name' => $validate['department']]);
         $address = Address::firstOrCreate(
@@ -130,7 +132,7 @@ class CustomerController extends Controller
                 'city' => $validate['city'],
                 'pincode' => $validate['pincode'],
                 'state' => $validate['state'],
-                'country' => $validate['country'],
+                'country' => $country->id,
             ]
         );
 

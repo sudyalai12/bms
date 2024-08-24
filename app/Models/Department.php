@@ -10,4 +10,8 @@ class Department extends Model
     use HasFactory;
     protected $table = 'departments';
     protected $guarded = [];
+
+    public function customers(){
+        return $this->hasMany(Customer::class);
+    }
 }

@@ -11,7 +11,8 @@ class Company extends Model
     protected $table = 'companies';
     protected $guarded = [];
 
-    public function addresses(){
-        return $this->hasMany(Address::class);
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
     }
 }

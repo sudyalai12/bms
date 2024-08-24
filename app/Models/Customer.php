@@ -10,7 +10,7 @@ class Customer extends Model
     use HasFactory;
     protected $table = 'customers';
     protected $guarded = [];
-    public static $taxTypes = ['GST', 'CGST', 'SGST', 'IGST', 'UTST'];
+ 
 
     public function company()
     {
@@ -25,6 +25,11 @@ class Customer extends Model
     public function address()
     {
         return $this->belongsTo(Address::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 
     public function generateReference()

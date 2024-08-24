@@ -2,8 +2,10 @@
 
 use App\Models\Address;
 use App\Models\Company;
+use App\Models\Country;
 use App\Models\Customer;
 use App\Models\Department;
+use App\Models\Tax;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,9 +17,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('code');
+            $table->timestamps();
+        });
+
+        Schema::create('tax', function (Blueprint $table) {
+            $table->id();
+            $table->string('type');
+            $table->timestamps();
+        });
+
+        Schema::create('customers', function (Blueprint $table) {
+            $table->id();
+            $table->string('company');
             $table->timestamps();
         });
 
@@ -29,26 +44,26 @@ return new class extends Migration
 
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Company::class, 'company_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Customer::class, 'customer_id')->constrained()->onDelete('cascade');
             $table->string('address1');
             $table->string('address2');
             $table->string('city');
             $table->string('pincode');
             $table->string('state');
-            $table->enum('country', Address::$countryList)->default('India');
             $table->timestamps();
         });
 
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('contact_persons', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Company::class, 'company_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Customer::class, 'customer_id')->constrained()->onDelete('cascade');
             $table->foreignIdFor(Department::class, 'department_id')->constrained()->onDelete('cascade');
             $table->foreignIdFor(Address::class, 'address_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Country::class, 'country_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Tax::class, 'tax_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('email');
             $table->string('phone');
             $table->string('mobile');
-            $table->enum('tax_type', Customer::$taxTypes)->default('GST');
             $table->string('gstn');
             $table->string('pan');
             $table->timestamps();
@@ -60,9 +75,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('companies');
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('contact_persons');
         Schema::dropIfExists('addresses');
+        Schema::dropIfExists('departments');
         Schema::dropIfExists('customers');
+        Schema::dropIfExists('countries');
+        Schema::dropIfExists('tax');
     }
 };

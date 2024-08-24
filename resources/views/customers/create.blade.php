@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('js')
+    <script>
+        const countries = JSON.parse(`<?php echo json_encode($countries); ?>`);
+        $("#country").autocomplete({ source: countries });
+    </script>
 @endsection
 @section('content')
     <div class="form-box">
@@ -12,8 +16,8 @@
             <div class="form-block">
                 <h2>Basic Details</h2>
                 <x-form.field class="fb-500">
-                    <x-form.label for="name">Customer Name</x-form.label>
-                    <x-form.input placeholder="Enter Customer Name" id="name" type="text" name="name"
+                    <x-form.label for="customer">Customer Name</x-form.label>
+                    <x-form.input placeholder="Enter Customer Name" id="customer" type="text" name="name"
                         value="{{ old('name') }}" />
                     <x-form.error name="name" />
                 </x-form.field>

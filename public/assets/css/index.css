@@ -102,7 +102,8 @@ aside {
 .no-border {
   border: none;
 }
-.no-border td, .no-border th {
+.no-border td,
+.no-border th {
   border: none;
 }
 
@@ -294,6 +295,7 @@ FORM CSS
 .quote-form .form-input {
   padding: 8px 10px;
   border: 1px solid rgba(108, 117, 125, 0.8);
+  width: 100%;
 }
 .customer-form .form-button,
 .quote-form .form-button {
@@ -310,10 +312,18 @@ FORM CSS
 .quote-form .form-button a {
   color: #fff;
 }
-.customer-form .autocomplete-items,
-.quote-form .autocomplete-items {
+
+.quote-form {
+  border: 2px solid #565d64;
+  border-top: 8px solid #565d64;
+}
+.quote-form .form-header {
+  background-color: #6c757d;
+}
+
+.autocomplete-items {
   position: absolute;
-  border: 1px solid #d4d4d4;
+  background-color: #fff;
   border-bottom: none;
   border-top: none;
   z-index: 99;
@@ -322,29 +332,8 @@ FORM CSS
   left: 0;
   right: 0;
 }
-.customer-form .autocomplete-items div,
-.quote-form .autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-  background-color: #fff;
-  border-bottom: 1px solid #d4d4d4;
-}
-.customer-form .autocomplete-items div:hover,
-.quote-form .autocomplete-items div:hover {
-  /*when hovering an item:*/
-  background-color: #e9e9e9;
-}
-.customer-form .autocomplete-active,
-.quote-form .autocomplete-active {
-  /*when navigating through the items using the arrow keys:*/
-  background-color: DodgerBlue !important;
-  color: #ffffff;
-}
-
-.quote-form {
-  border: 2px solid #565d64;
-  border-top: 8px solid #565d64;
-}
-.quote-form .form-header {
-  background-color: #6c757d;
+.autocomplete-items div {
+  border: 1px solid #d4d4d4;
+  border-top: none;
+  padding: 2px 8px;
 }/*# sourceMappingURL=index.css.map */

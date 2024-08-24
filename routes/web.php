@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutocompleteController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProductController;
@@ -40,3 +41,5 @@ Route::get('/quotes/{quote}/pdf1', function ($quote) {
 //     return redirect("/quotes/{$quote->id}");
 // });
 Route::get('/quotes/{quote}', [QuoteController::class, 'show']);
+
+Route::get('/search', [AutocompleteController::class, 'fetch']);
